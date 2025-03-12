@@ -17,7 +17,7 @@ import NoDataFound from "./NoDataFound";
 import { Form, InputGroup } from "react-bootstrap";
 const ProductList = () => {
  
-const {products,isLoading,setPage,clearAllFilters,handleBack,handleCheck,handleSearch,removeFilter,query,allValues,totalItems,handleLanguage}=useProductData()
+const {products,isLoading,setPage,clearAllFilters,handleBack,handleCheck,handleSearch,removeFilter,query,allValues,totalItems,handleLanguage,searchParam}=useProductData()
 
 
   if (isLoading) return <Spinner />;
@@ -34,17 +34,11 @@ const {products,isLoading,setPage,clearAllFilters,handleBack,handleCheck,handleS
       />
       <Button onClick={handleSearch}>Search</Button>
     </InputGroup>
-  <select name="" id="" onChange={(e)=>handleLanguage(e)}>
+  <select name="" id="" value={searchParam.get('index')||'English'} onChange={(e)=>handleLanguage(e)}>
 <option value="English">English</option>
 <option value="Arabic">Arabic</option>
   </select>
-    <div className="">
-        <select name="" id="">
-            <option value="">Relevence</option>
-            <option value="">high-low</option>
-            <option value="">low-high</option>
-        </select>
-    </div>
+    
 
   </div>
     <div className="d-flex p-3">
@@ -291,5 +285,5 @@ mutate("search", async () => {
     return response.data;
   });
   }
-  return {products,isLoading,setPage,clearAllFilters,handleBack,handleCheck,handleSearch,removeFilter,query,allValues,totalItems,handleLanguage}
+  return {products,isLoading,setPage,clearAllFilters,handleBack,handleCheck,handleSearch,removeFilter,query,allValues,totalItems,handleLanguage,searchParam}
 }

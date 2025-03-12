@@ -14,7 +14,7 @@ const Search = () => {
         placeholder="Search for products..."
         className="border-primary"
       />
-      <Link to={`/product?query=${query}`} className="btn btn-primary">
+      <Link to={`/product?query=${query}&page=1`} className="btn btn-primary">
         Search
       </Link>
     </InputGroup>
